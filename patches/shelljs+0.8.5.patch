@@ -1,0 +1,12 @@
+diff --git a/node_modules/shelljs/commands.js b/node_modules/shelljs/commands.js
+index f31adb2..f2035f2 100644
+--- a/node_modules/shelljs/commands.js
++++ b/node_modules/shelljs/commands.js
+@@ -5,7 +5,6 @@ module.exports = [
+   'cp',
+   'dirs',
+   'echo',
+-  'exec',
+   'find',
+   'grep',
+   'head',

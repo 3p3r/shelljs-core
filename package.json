@@ -1,0 +1,38 @@
+{
+  "name": "shelljs-core",
+  "version": "1.0.0",
+  "description": "just the core logic of ShellJS without its dependency on native modules",
+  "main": "./index.js",
+  "scripts": {
+    "postinstall": "patch-package && rm -f node_modules/shelljs/src/exec*.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3p3r/shelljs-core.git"
+  },
+  "keywords": [
+    "shelljs",
+    "shx"
+  ],
+  "author": "Sepehr Laal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/3p3r/shelljs-core/issues"
+  },
+  "homepage": "https://github.com/3p3r/shelljs-core#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.2",
+    "@types/shelljs": "^0.8.11",
+    "assert": "^2.0.0",
+    "babel-loader": "^8.2.5",
+    "buffer": "^6.0.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "patch-package": "^6.4.7",
+    "shelljs": "^0.8.5",
+    "ts-loader": "^9.3.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2017",
+    "declarationDir": "dist",
+    "moduleResolution": "node",
+    "strict": true,
+    "allowJs": true,
+    "composite": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "exclude": ["node_modules"]
+}
