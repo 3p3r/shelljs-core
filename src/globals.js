@@ -1,17 +1,14 @@
-let _fs = null;
-let _os = null;
-let _path = null;
-let _util = null;
-let _process = null;
-let _console = null;
 const EMPTY_OBJECT = {};
-const assert = require('assert');
+let _fs = EMPTY_OBJECT;
+let _os = EMPTY_OBJECT;
+let _path = EMPTY_OBJECT;
+let _process = EMPTY_OBJECT;
+let _console = EMPTY_OBJECT;
 
 class Globals {
   get fs() {
     return new Proxy(EMPTY_OBJECT, {
       get(target, prop, receiver) {
-        assert.ok(_fs, 'fs is not set. use .externals to set it.');
         return Reflect.get(_fs, prop, receiver);
       },
     });
@@ -23,7 +20,6 @@ class Globals {
   get os() {
     return new Proxy(EMPTY_OBJECT, {
       get(target, prop, receiver) {
-        assert.ok(_os, 'os is not set. use .externals to set it.');
         return Reflect.get(_os, prop, receiver);
       },
     });
@@ -35,7 +31,6 @@ class Globals {
   get path() {
     return new Proxy(EMPTY_OBJECT, {
       get(target, prop, receiver) {
-        assert.ok(_path, 'path is not set. use .externals to set it.');
         return Reflect.get(_path, prop, receiver);
       },
     });
@@ -44,22 +39,9 @@ class Globals {
     _path = v;
   }
 
-  get util() {
-    return new Proxy(EMPTY_OBJECT, {
-      get(target, prop, receiver) {
-        assert.ok(_util, 'util is not set. use .externals to set it.');
-        return Reflect.get(_util, prop, receiver);
-      },
-    });
-  }
-  set util(v) {
-    _util = v;
-  }
-
   get process() {
     return new Proxy(EMPTY_OBJECT, {
       get(target, prop, receiver) {
-        assert.ok(_process, 'process is not set. use .externals to set it.');
         return Reflect.get(_process, prop, receiver);
       },
     });
@@ -71,7 +53,6 @@ class Globals {
   get console() {
     return new Proxy(EMPTY_OBJECT, {
       get(target, prop, receiver) {
-        assert.ok(_console, 'console is not set. use .externals to set it.');
         return Reflect.get(_console, prop, receiver);
       },
     });

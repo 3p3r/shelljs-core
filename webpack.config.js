@@ -1,6 +1,6 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const { ProvidePlugin, DefinePlugin } = require('webpack');
+const { ProvidePlugin, EnvironmentPlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -10,14 +10,13 @@ module.exports = {
   cache: false,
   plugins: [
     new CleanWebpackPlugin(),
+    new EnvironmentPlugin({
+      NODE_DEBUG: '',
+    }),
     new ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
-      process: require.resolve('./src/process'),
-      console: require.resolve('./src/console'),
-    }),
-    new DefinePlugin({
-      'process.versions.node': JSON.stringify(process.versions.node),
-      'process.version': JSON.stringify(process.version),
+      process: [require.resolve('./src/globals'), 'process'],
+      console: [require.resolve('./src/globals'), 'console'],
     }),
     new CopyPlugin({
       patterns: [
@@ -64,21 +63,16 @@ module.exports = {
       },
     ],
   },
-  externalsPresets: {
-    node: true,
-  },
   resolve: {
     fallback: {
+      util: require.resolve('util'),
       assert: require.resolve('assert'),
       buffer: require.resolve('buffer'),
     },
     alias: {
       os: require.resolve('./src/os'),
       fs: require.resolve('./src/fs'),
-      util: require.resolve('./src/util'),
       path: require.resolve('./src/path'),
-      process: require.resolve('./src/process'),
-      console: require.resolve('./src/console'),
     },
   },
 };
